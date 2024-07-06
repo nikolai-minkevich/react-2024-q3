@@ -2,13 +2,30 @@ import { Component } from "react";
 import Header from "../Header";
 import Content from "../Content";
 import "./index.css";
+import IEpisode from "../../interfaces/IEpisode";
+import { getEpisodes } from "../../services/stapi";
 
-class MainPage extends Component {
+type TMainPageState = {
+  items: IEpisode[] | null;
+};
+
+class MainPage extends Component<TMainPageState> {
+  state: TMainPageState = {
+    items: null,
+  };
+
+  fetchItems = async (term: string | null) => {
+    const response = await getEpisodes(term);
+    this.setState({
+      items: response.episodes,
+    });
+  };
+
   render() {
     return (
       <>
-        <Header></Header>
-        <Content></Content>
+        <Header searchAction={this.fetchItems}></Header>
+        <Content items={this.state.items}></Content>
       </>
     );
   }
