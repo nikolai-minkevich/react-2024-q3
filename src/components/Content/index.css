@@ -2,4 +2,6 @@
   background-color: darkslategrey;
   padding: 0;
   margin: 0;
+  display: flex;
+  flex-wrap: wrap;
 }

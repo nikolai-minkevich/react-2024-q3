@@ -1,0 +1,9 @@
+.item {
+  display: flex;
+  background-color: darkblue;
+  font-family: column;
+  width: 200px;
+  flex-direction: column;
+  padding: 5px;
+  margin: 10px;
+}
