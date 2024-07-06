@@ -1,0 +1,23 @@
+.search {
+  background-color: darkorange;
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 300px;
+}
+
+.search input[type="text"] {
+  background-color: lightslategray;
+  color: beige;
+  font-size: 1.2em;
+  width: 200px;
+}
+
+.search button {
+  background-color: lightslategray;
+  color: beige;
+  height: 2em;
+  width: 90px;
+}
