@@ -1,15 +1,15 @@
 .throw-error-button {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px;
-    margin: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  margin: 5px;
 }
 
 .throw-error-button button {
-    background-color: crimson;
-    color: beige;
-    height: 2em;
-    width: 120px;
+  background-color: crimson;
+  color: beige;
+  height: 2em;
+  width: 120px;
 }

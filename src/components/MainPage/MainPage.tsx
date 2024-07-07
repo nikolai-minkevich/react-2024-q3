@@ -4,7 +4,6 @@ import Content from "../Content";
 import "./index.css";
 import IEpisode from "../../interfaces/IEpisode";
 import { getEpisodes } from "../../services/stapi";
-import ErrorBoundary from "../ErrorBoundary";
 
 type TMainPageState = {
   items: IEpisode[] | undefined | null;
@@ -28,10 +27,8 @@ class MainPage extends Component<Record<string, never>, TMainPageState> {
   render() {
     return (
       <>
-        <ErrorBoundary>
-          <Header searchAction={this.fetchItems}></Header>
-          <Content items={this.state.items}></Content>
-        </ErrorBoundary>
+        <Header searchAction={this.fetchItems}></Header>
+        <Content items={this.state.items}></Content>
       </>
     );
   }

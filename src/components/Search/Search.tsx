@@ -34,7 +34,6 @@ class Search extends Component<TSearchProps, TSearchState> {
       term: term,
     });
     this.props.searchAction(term);
-
   }
 
   render() {

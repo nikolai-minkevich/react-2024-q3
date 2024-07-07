@@ -17,7 +17,6 @@ class Header extends Component<THeaderProps> {
           <Search searchAction={this.props.searchAction} />
           <ThrowErrorButton />
         </div>
-
       </div>
     );
   }
