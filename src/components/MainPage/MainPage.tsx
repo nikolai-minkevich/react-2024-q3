@@ -6,15 +6,18 @@ import IEpisode from "../../interfaces/IEpisode";
 import { getEpisodes } from "../../services/stapi";
 
 type TMainPageState = {
-  items: IEpisode[] | null;
+  items: IEpisode[] | undefined | null;
 };
 
-class MainPage extends Component<TMainPageState> {
+class MainPage extends Component<Record<string, never>, TMainPageState> {
   state: TMainPageState = {
     items: null,
   };
 
   fetchItems = async (term: string | null) => {
+    this.setState({
+      items: null,
+    });
     const response = await getEpisodes(term);
     this.setState({
       items: response.episodes,
