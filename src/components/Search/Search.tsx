@@ -26,13 +26,15 @@ class Search extends Component<TSearchProps, TSearchState> {
   };
 
   componentDidMount(): void {
-    const term = localStorage.getItem("term");
-    if (term !== null) {
-      this.setState({
-        term: term,
-      });
-      this.props.searchAction(term);
+    let term = localStorage.getItem("term");
+    if (!term) {
+      term = "";
     }
+    this.setState({
+      term: term,
+    });
+    this.props.searchAction(term);
+
   }
 
   render() {
