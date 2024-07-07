@@ -3,7 +3,7 @@ const ROOT = "https://stapi.co/api/v1/rest";
 export async function getEpisodes(term: string | null) {
   const url = `${ROOT}/episode/search`;
   let body = null;
-  if (term) {
+  if (term !== null) {
     body = new URLSearchParams({ title: term, name: term }).toString();
   }
 

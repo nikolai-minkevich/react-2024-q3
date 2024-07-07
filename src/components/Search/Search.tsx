@@ -27,7 +27,7 @@ class Search extends Component<TSearchProps, TSearchState> {
 
   componentDidMount(): void {
     const term = localStorage.getItem("term");
-    if (term) {
+    if (term !== null) {
       this.setState({
         term: term,
       });
