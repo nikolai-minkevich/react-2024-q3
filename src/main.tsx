@@ -4,6 +4,6 @@ import ErrorBoundary from "./components/ErrorBoundary";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <ErrorBoundary>
-    <MainPage />{" "}
+    <MainPage />
   </ErrorBoundary>,
 );
