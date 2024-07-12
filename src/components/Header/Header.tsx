@@ -11,13 +11,13 @@ type THeaderProps = {
 class Header extends Component<THeaderProps> {
   render() {
     return (
-      <div className="header">
+      <section className="header">
         <Logo />
         <div className="right-side">
           <Search searchAction={this.props.searchAction} />
           <ThrowErrorButton />
         </div>
-      </div>
+      </section>
     );
   }
 }

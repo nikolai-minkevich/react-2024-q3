@@ -21,7 +21,6 @@ class ThrowErrorButton extends Component<
 
   render() {
     if (this.state.counter === 1) {
-      // Simulate a JS error
       throw new Error("Dummy error");
     }
 
