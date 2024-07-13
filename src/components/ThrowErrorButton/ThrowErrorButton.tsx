@@ -1,35 +1,30 @@
-import { Component } from "react";
+import { FC, ReactElement, useState } from "react";
 import "./index.css";
 
 type TThrowErrorButtonState = {
   counter: number;
 };
 
-class ThrowErrorButton extends Component<
-  Record<string, null>,
-  TThrowErrorButtonState
-> {
-  state: TThrowErrorButtonState = {
+const ThrowErrorButton: FC = (): ReactElement => {
+  const [state, setState] = useState<TThrowErrorButtonState>({
     counter: 0,
-  };
+  });
 
-  handleClick = () => {
-    this.setState({
+  const handleClick = () => {
+    setState({
       counter: 1,
     });
   };
 
-  render() {
-    if (this.state.counter === 1) {
-      throw new Error("Dummy error");
-    }
-
-    return (
-      <div className="throw-error-button">
-        <button onClick={this.handleClick}>Throw an error!</button>
-      </div>
-    );
+  if (state.counter === 1) {
+    throw new Error("Dummy error");
   }
-}
+
+  return (
+    <div className="throw-error-button">
+      <button onClick={handleClick}>Throw an error!</button>
+    </div>
+  );
+};
 
 export default ThrowErrorButton;

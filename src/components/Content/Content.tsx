@@ -1,32 +1,30 @@
-import { Component } from "react";
 import IEpisode from "../../interfaces/IEpisode";
 import "./index.css";
 import Item from "../Item";
+import { FC, ReactElement } from "react";
 
 type TContentProps = {
   items: IEpisode[] | undefined | null;
 };
 
-class Content extends Component<TContentProps> {
-  render() {
-    return (
-      <>
-        {this.props.items ? (
-          this.props.items.length ? (
-            <section className="content">
-              {this.props.items.map((item, i) => {
-                return <Item content={item} key={i} />;
-              })}
-            </section>
-          ) : (
-            <p>No items found. Try 'Matter' for example.</p>
-          )
+const Content: FC<TContentProps> = ({ items }): ReactElement => {
+  return (
+    <>
+      {items ? (
+        items.length ? (
+          <section className="content">
+            {items.map((item, i) => {
+              return <Item content={item} key={i} />;
+            })}
+          </section>
         ) : (
-          <p>Content is loading...</p>
-        )}
-      </>
-    );
-  }
-}
+          <p>No items found. Try 'Matter' for example.</p>
+        )
+      ) : (
+        <p>Content is loading...</p>
+      )}
+    </>
+  );
+};
 
 export default Content;

@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { FC, ReactElement, useState } from "react";
 import Header from "../Header";
 import Content from "../Content";
 import "./index.css";
@@ -9,29 +9,25 @@ type TMainPageState = {
   items: IEpisode[] | undefined | null;
 };
 
-class MainPage extends Component<Record<string, never>, TMainPageState> {
-  state: TMainPageState = {
-    items: null,
-  };
+const MainPage: FC = (): ReactElement => {
+  const [state, setState] = useState<TMainPageState>({ items: null });
 
-  fetchItems = async (term: string | null) => {
-    this.setState({
+  const fetchItems = async (term: string | null) => {
+    setState({
       items: null,
     });
     const response = await getEpisodes(term);
-    this.setState({
+    setState({
       items: response.episodes,
     });
   };
 
-  render() {
-    return (
-      <>
-        <Header searchAction={this.fetchItems}></Header>
-        <Content items={this.state.items}></Content>
-      </>
-    );
-  }
-}
+  return (
+    <>
+      <Header searchAction={fetchItems}></Header>
+      <Content items={state.items}></Content>
+    </>
+  );
+};
 
 export default MainPage;

@@ -1,5 +1,6 @@
-import { ChangeEvent, Component } from "react";
+import { ChangeEvent, FC, ReactElement, useState } from "react";
 import "./index.css";
+import useLocalStorage from "../../hooks/useLocalStorage";
 
 type TSearchProps = {
   searchAction: (term: string | null) => void;
@@ -9,45 +10,30 @@ type TSearchState = {
   term: string;
 };
 
-class Search extends Component<TSearchProps, TSearchState> {
-  state: TSearchState = {
-    term: "",
-  };
+const Search: FC<TSearchProps> = ({ searchAction }): ReactElement => {
+  const [state, setState] = useState<TSearchState>({ term: '' });
+  useLocalStorage({ term: state.term, searchAction })
 
-  handleInputChange = (event: ChangeEvent<HTMLInputElement>): void => {
-    this.setState({
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>): void => {
+    setState({
       term: event.target.value,
     });
   };
 
-  handleSearch = (): void => {
-    localStorage.setItem("term", this.state.term);
-    this.props.searchAction(this.state.term);
+  const handleSearch = (): void => {
+    searchAction(state.term);
   };
 
-  componentDidMount(): void {
-    let term = localStorage.getItem("term");
-    if (!term) {
-      term = "";
-    }
-    this.setState({
-      term: term,
-    });
-    this.props.searchAction(term);
-  }
-
-  render() {
-    return (
-      <div className="search">
-        <input
-          type="text"
-          defaultValue={this.state.term}
-          onChange={this.handleInputChange}
-        />
-        <button onClick={this.handleSearch}>Search</button>
-      </div>
-    );
-  }
+  return (
+    <div className="search">
+      <input
+        type="text"
+        defaultValue={state.term}
+        onChange={handleInputChange}
+      />
+      <button onClick={handleSearch}>Search</button>
+    </div>
+  );
 }
 
 export default Search;

@@ -1,25 +1,23 @@
-import { Component } from "react";
 import "./index.css";
 import Logo from "../Logo";
 import Search from "../Search";
 import ThrowErrorButton from "../ThrowErrorButton";
+import { FC, ReactElement } from "react";
 
 type THeaderProps = {
   searchAction: (term: string | null) => void;
 };
 
-class Header extends Component<THeaderProps> {
-  render() {
-    return (
-      <section className="header">
-        <Logo />
-        <div className="right-side">
-          <Search searchAction={this.props.searchAction} />
-          <ThrowErrorButton />
-        </div>
-      </section>
-    );
-  }
-}
+const Header: FC<THeaderProps> = ({ searchAction }): ReactElement => {
+  return (
+    <section className="header">
+      <Logo />
+      <div className="right-side">
+        <Search searchAction={searchAction} />
+        <ThrowErrorButton />
+      </div>
+    </section>
+  );
+};
 
 export default Header;
