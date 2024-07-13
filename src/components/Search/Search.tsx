@@ -11,8 +11,8 @@ type TSearchState = {
 };
 
 const Search: FC<TSearchProps> = ({ searchAction }): ReactElement => {
-  const [state, setState] = useState<TSearchState>({ term: '' });
-  useLocalStorage({ term: state.term, searchAction })
+  const [state, setState] = useState<TSearchState>({ term: "" });
+  useLocalStorage({ term: state.term, searchAction });
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>): void => {
     setState({
@@ -34,6 +34,6 @@ const Search: FC<TSearchProps> = ({ searchAction }): ReactElement => {
       <button onClick={handleSearch}>Search</button>
     </div>
   );
-}
+};
 
 export default Search;

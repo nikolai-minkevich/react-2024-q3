@@ -6,7 +6,7 @@ type TuseLocalStorageProps = {
 };
 
 const useLocalStorage: FC<TuseLocalStorageProps> = ({ term, searchAction }) => {
-  const loadedTerm = useRef("")
+  const loadedTerm = useRef("");
 
   useEffect(() => {
     loadedTerm.current = localStorage.getItem("term") ?? "";
@@ -14,9 +14,9 @@ const useLocalStorage: FC<TuseLocalStorageProps> = ({ term, searchAction }) => {
     return () => {
       localStorage.setItem("term", term);
     };
-  // eslint-disable-next-line react-compiler/react-compiler
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); 
+    // eslint-disable-next-line react-compiler/react-compiler
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return loadedTerm.current;
 };
 
