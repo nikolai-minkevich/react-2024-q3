@@ -14,7 +14,6 @@ const DetailedView: FC = (): ReactElement => {
     <>
       {item && (
         <div className="detailed-view">
-          {item.uid}
           <Item content={item} detailed={true} />
         </div>
       )}

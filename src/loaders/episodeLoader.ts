@@ -11,7 +11,6 @@ type TParamsString = {
 export default async function episodeLoader({ params }: TParamsString) {
   if (params?.id) {
     const item: IEpisode = await getEpisode(params.id);
-    console.log("item", item);
     return { item };
   }
 }
