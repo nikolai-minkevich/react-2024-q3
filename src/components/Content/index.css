@@ -4,4 +4,9 @@
   margin: 0;
   display: flex;
   flex-wrap: wrap;
+  cursor: default;
+}
+
+a, a:hover, a:active, a:visited, a:focus {
+  text-decoration:none;
 }
