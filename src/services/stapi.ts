@@ -17,3 +17,16 @@ export async function getEpisodes(term: string | null) {
     .then((response) => response.json())
     .then((response) => response);
 }
+
+export async function getEpisode(uid: string) {
+  const url = `${ROOT}/episode/?uid=${uid}`;
+
+  return await fetch(url, {
+    method: "GET",
+    headers: {
+      "content-type": "application/x-www-form-urlencoded",
+    },
+  })
+    .then((response) => response.json())
+    .then((response) => response.episode);
+}

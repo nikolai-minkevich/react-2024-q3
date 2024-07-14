@@ -36,11 +36,10 @@ const MainPage: FC = (): ReactElement => {
         defaulTerm={defaulTerm}
         inputElementRef={inputElementRef}
       ></Header>
-      <Content items={state.items}></Content>
-      <div className="detailed">
+      <div className="content-container">
+        <Content items={state.items}></Content>
         <Outlet />
       </div>
-
     </>
   );
 };
