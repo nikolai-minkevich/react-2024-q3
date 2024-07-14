@@ -1,23 +1,23 @@
-import { useEffect, FC, useRef } from "react";
+import { useEffect, useRef } from "react";
 
-type TuseLocalStorageProps = {
-  term: string;
-  searchAction: (term: string | null) => void;
-};
+export type TTerm = string;
 
-const useLocalStorage: FC<TuseLocalStorageProps> = ({ term, searchAction }) => {
-  const loadedTerm = useRef("");
+const useLocalStorage = (): [string, React.RefObject<HTMLInputElement>] => {
+
+  const inputElementRef = useRef<HTMLInputElement>(null);
+
+  const defaulTerm = localStorage.getItem("term") ?? ""
 
   useEffect(() => {
-    loadedTerm.current = localStorage.getItem("term") ?? "";
-    searchAction(loadedTerm.current);
-    return () => {
-      localStorage.setItem("term", term);
-    };
-    // eslint-disable-next-line react-compiler/react-compiler
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const handleBeforeUnload = () => {
+      const currentTermValue = inputElementRef.current?.value
+    
+      if (currentTermValue && currentTermValue.length > 0) localStorage.setItem("term", currentTermValue)
+    }
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    return () => window.removeEventListener('beforeunload', handleBeforeUnload);
   }, []);
-  return loadedTerm.current;
+  return [defaulTerm, inputElementRef]
 };
 
 export default useLocalStorage;
