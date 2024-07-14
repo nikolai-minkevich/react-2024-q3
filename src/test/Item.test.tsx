@@ -19,10 +19,11 @@ const setup = (): RenderResult =>
       <Item content={contentFixture} />
     </MemoryRouter>,
   );
-describe("test", () => {
-  test("demo", () => {
+describe("Item", () => {
+  test("is exist", () => {
     setup();
     expect(true).toBe(true);
     expect(screen.findByText("title")).toBeDefined();
   });
 });
+
