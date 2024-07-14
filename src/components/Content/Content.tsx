@@ -1,15 +1,22 @@
 import IEpisode from "../../interfaces/IEpisode";
 import "./index.css";
 import Item from "../Item";
-import { FC, ReactElement } from "react";
+import { Dispatch, FC, ReactElement, SetStateAction } from "react";
 import Pagination from "../Pagination";
 import { useNavigate } from "react-router-dom";
+import IPage from "../../interfaces/IPage";
 
 type TContentProps = {
   items: IEpisode[] | undefined | null;
+  page: IPage | undefined | null;
+  setPageNumber: Dispatch<SetStateAction<number>>;
 };
 
-const Content: FC<TContentProps> = ({ items }): ReactElement => {
+const Content: FC<TContentProps> = ({
+  items,
+  page,
+  setPageNumber,
+}): ReactElement => {
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -22,7 +29,7 @@ const Content: FC<TContentProps> = ({ items }): ReactElement => {
         items.length ? (
           <>
             <div className="content" onClick={handleClick}>
-              <Pagination />
+              <Pagination page={page} setPageNumber={setPageNumber} />
               <section className="content-items">
                 {items.map((item, i) => {
                   return <Item content={item} key={i} />;

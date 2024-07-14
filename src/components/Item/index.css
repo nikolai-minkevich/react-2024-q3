@@ -31,5 +31,6 @@
 }
 
 .item:hover {
-  background-color: darkorange;
+  background-color: chocolate;
+  cursor: pointer;
 }

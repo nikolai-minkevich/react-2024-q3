@@ -6,28 +6,39 @@ import IEpisode from "../../interfaces/IEpisode";
 import { getEpisodes } from "../../services/stapi";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import { Outlet } from "react-router-dom";
+import IPage from "../../interfaces/IPage";
 
 type TMainPageState = {
   items: IEpisode[] | undefined | null;
+  page: IPage | undefined | null;
 };
 
 const MainPage: FC = (): ReactElement => {
-  const [state, setState] = useState<TMainPageState>({ items: null });
+  const [state, setState] = useState<TMainPageState>({
+    items: null,
+    page: null,
+  });
+
+  const [pageNumber, setPageNumber] = useState<number>(0);
 
   const [defaulTerm, inputElementRef] = useLocalStorage();
-  const fetchItems = async (term: string | null) => {
+  const fetchItems = async (term: string | null, pageNumber: number) => {
     setState({
       items: null,
+      page: null,
     });
-    const response = await getEpisodes(term);
+    const response = await getEpisodes(term, pageNumber);
     setState({
       items: response.episodes,
+      page: response.page,
     });
   };
   // First time fetch
   useEffect(() => {
-    fetchItems(defaulTerm);
-  }, [defaulTerm]);
+    console.log("pageNumber", pageNumber);
+
+    fetchItems(defaulTerm, pageNumber);
+  }, [defaulTerm, pageNumber]);
 
   return (
     <>
@@ -37,7 +48,11 @@ const MainPage: FC = (): ReactElement => {
         inputElementRef={inputElementRef}
       ></Header>
       <div className="content-container">
-        <Content items={state.items}></Content>
+        <Content
+          items={state.items}
+          page={state.page}
+          setPageNumber={setPageNumber}
+        ></Content>
         <Outlet />
       </div>
     </>

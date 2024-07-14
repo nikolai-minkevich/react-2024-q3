@@ -5,7 +5,7 @@ import ThrowErrorButton from "../ThrowErrorButton";
 import { FC, ReactElement } from "react";
 
 type THeaderProps = {
-  searchAction: (term: string | null) => void;
+  searchAction: (term: string | null, pageNumber: number) => void;
   defaulTerm: string;
   inputElementRef: React.RefObject<HTMLInputElement>;
 };

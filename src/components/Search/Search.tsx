@@ -2,7 +2,7 @@ import { FC, ReactElement, useState } from "react";
 import "./index.css";
 
 type TSearchProps = {
-  searchAction: (term: string | null) => void;
+  searchAction: (term: string | null, pageNumber: number) => void;
   defaulTerm: string;
   inputElementRef: React.RefObject<HTMLInputElement>;
 };
@@ -15,7 +15,7 @@ const Search: FC<TSearchProps> = ({
   const [term, setTerm] = useState<string>(defaulTerm);
 
   const handleSearch = (): void => {
-    searchAction(term);
+    searchAction(term, 0);
   };
 
   return (
