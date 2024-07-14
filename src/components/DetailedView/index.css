@@ -1,0 +1,11 @@
+.close {
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.close a {
+  color: aliceblue;
+  text-decoration: none;
+}
