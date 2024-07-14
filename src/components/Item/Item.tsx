@@ -2,7 +2,7 @@ import "./index.css";
 import IEpisode from "../../interfaces/IEpisode";
 import { FC, ReactElement } from "react";
 import { useNavigate } from "react-router-dom";
-
+import React from "react";
 type TItemProps = {
   content: IEpisode;
   detailed?: boolean | undefined | null;
