@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 type TItemProps = {
   content: IEpisode;
-  detailed: boolean | undefined | null;
+  detailed?: boolean | undefined | null;
 };
 
 const Item: FC<TItemProps> = ({ content, detailed }): ReactElement => {
