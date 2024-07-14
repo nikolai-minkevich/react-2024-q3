@@ -1,4 +1,4 @@
-.content {
+.content-items {
   background-color: darkslategrey;
   padding: 0;
   margin: 0;
@@ -7,6 +7,14 @@
   cursor: default;
 }
 
-a, a:hover, a:active, a:visited, a:focus {
-  text-decoration:none;
+a,
+a:hover,
+a:active,
+a:visited,
+a:focus {
+  text-decoration: none;
+}
+
+.content {
+  background-color: darkslategrey;
 }

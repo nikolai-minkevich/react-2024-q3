@@ -1,7 +1,7 @@
 import "./index.css";
 import IEpisode from "../../interfaces/IEpisode";
 import { FC, ReactElement } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 type TItemProps = {
   content: IEpisode;
@@ -9,12 +9,17 @@ type TItemProps = {
 };
 
 const Item: FC<TItemProps> = ({ content, detailed }): ReactElement => {
+  const navigate = useNavigate();
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    event.stopPropagation();
+    navigate(`/item/${content.uid}`);
+  };
+
   return (
-    <div className="item">
-      <Link to={`/item/${content.uid}`}>
-        <h4>{content.title}</h4>
-        <p>{content.usAirDate}</p>
-      </Link>
+    <div className="item" onClick={handleClick}>
+      <h4>{content.title}</h4>
+      <p>{content.usAirDate}</p>
+
       {detailed && (
         <>
           <h3>Additional info:</h3>
