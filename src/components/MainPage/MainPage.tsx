@@ -1,4 +1,4 @@
-import { FC, ReactElement, useState,useEffect } from "react";
+import { FC, ReactElement, useState, useEffect } from "react";
 import Header from "../Header";
 import Content from "../Content";
 import "./index.css";
@@ -25,12 +25,16 @@ const MainPage: FC = (): ReactElement => {
   };
   // First time fetch
   useEffect(() => {
-    fetchItems(defaulTerm)
+    fetchItems(defaulTerm);
   }, [defaulTerm]);
 
   return (
     <>
-      <Header searchAction={fetchItems} defaulTerm={defaulTerm} inputElementRef={inputElementRef} ></Header>
+      <Header
+        searchAction={fetchItems}
+        defaulTerm={defaulTerm}
+        inputElementRef={inputElementRef}
+      ></Header>
       <Content items={state.items}></Content>
     </>
   );
