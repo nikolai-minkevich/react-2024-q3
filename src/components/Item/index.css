@@ -14,3 +14,13 @@
   margin-block-start: 0px;
   margin-block-end: 0px;
 }
+
+.item p {
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+}
+
+.item a {
+  color:aliceblue;
+  text-decoration: none;
+}
