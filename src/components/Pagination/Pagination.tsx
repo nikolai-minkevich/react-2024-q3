@@ -11,7 +11,6 @@ const Pagination: FC<TPaginationProps> = ({
   page,
   setPageNumber,
 }): ReactElement => {
-  console.log("page", page);
 
   const handlePrev = useCallback(() => {
     setPageNumber((prevCount?: number) => {
