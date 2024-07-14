@@ -4,7 +4,7 @@ import { useRouteError } from "react-router-dom";
 type TRouteError = {
   statusText: string | undefined;
   message: string | undefined;
-}
+};
 
 const ErrorPage: FC = (): ReactElement => {
   const error: TRouteError = useRouteError() as TRouteError;
@@ -17,6 +17,6 @@ const ErrorPage: FC = (): ReactElement => {
       </p>
     </div>
   );
-}
+};
 
 export default ErrorPage;

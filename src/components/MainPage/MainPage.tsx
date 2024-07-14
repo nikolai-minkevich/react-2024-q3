@@ -5,6 +5,7 @@ import "./index.css";
 import IEpisode from "../../interfaces/IEpisode";
 import { getEpisodes } from "../../services/stapi";
 import useLocalStorage from "../../hooks/useLocalStorage";
+import { Outlet } from "react-router-dom";
 
 type TMainPageState = {
   items: IEpisode[] | undefined | null;
@@ -36,6 +37,10 @@ const MainPage: FC = (): ReactElement => {
         inputElementRef={inputElementRef}
       ></Header>
       <Content items={state.items}></Content>
+      <div className="detailed">
+        <Outlet />
+      </div>
+
     </>
   );
 };
