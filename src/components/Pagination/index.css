@@ -1,0 +1,8 @@
+.pagination {
+  padding: 10px;
+}
+
+.pagination span {
+  margin-left: 10px;
+  margin-right: 10px;
+}

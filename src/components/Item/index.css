@@ -1,0 +1,36 @@
+.item {
+  display: flex;
+  background-color: darkblue;
+  font-family: column;
+  width: 200px;
+  flex-direction: column;
+  padding: 5px;
+  margin: 10px;
+}
+
+.item ul {
+  list-style-type: none;
+  padding-inline-start: 0px;
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+}
+
+.item p {
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+}
+
+.item a {
+  color: aliceblue;
+  text-decoration: none;
+}
+
+.item a:active {
+  color: aliceblue;
+  text-decoration: none;
+}
+
+.item:hover {
+  background-color: chocolate;
+  cursor: pointer;
+}
